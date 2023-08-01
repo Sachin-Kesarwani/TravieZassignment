@@ -12,27 +12,33 @@
   overflow: hidden;
   gap: 10px;
   padding: 10px;
+  border: 1px solid rgb(205, 198, 198);
+  border-radius: 15px;
   max-height: 480px;
-  transition: max-height 1.5s ease;
+  transition: max-height 2s ease;
 }
 
 .carousel-item {
   border-radius: 8px;
+  
 }
 .carousel-item:hover {
   box-shadow: 0 0 3px 3px rgba(255, 0, 0, 0.5),
     0 0 3px 3px rgba(255, 153, 0, 0.5);
+overflow: hidden;
 
   border-radius: 8px;
 }
 .carousel-item img {
   width: 100%;
-  
   border-radius: 8px;
   max-height: 150px;
-  object-fit:contain;
+  object-fit:cover
 }
-
+.carousel-item img:hover {
+ transform: scale(1.05);
+ transition: transform 0.8s ease ;
+  }
 .carousel.expanded {
   max-height: 100%;
 }

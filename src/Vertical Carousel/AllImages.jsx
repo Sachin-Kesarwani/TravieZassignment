@@ -1,32 +1,15 @@
 import React, { useState, useEffect, useRef, useLayoutEffect } from "react";
-import axios from "axios";
+
 import "../Style/carousel.css";
 import { DownOutlined, UpOutlined } from "@ant-design/icons";
 import SingleImage from "./SingleImage";
+import imagedata from "../data.json"
 
 const VerticalCarousel = () => {
-  const [images, setImages] = useState([]);
+  const [images, setImages] = useState(imagedata.imagedata);
   const [expanded, setExpanded] = useState(false);
   const carouselRef = useRef(null);
-  let [loading, setLoading] = useState(false);
-  useEffect(() => {
-    getImages();
-  }, []);
 
- 
-  const getImages = async () => {
-    setLoading(true);
-    try {
-      const response = await axios.get("https://fakestoreapi.com/products");
-      const imageUrls = response.data.map((product) => product.image);
-      let newdata = imageUrls.slice(0, 12);
-    
-      setImages(newdata);
-      setLoading(false);
-    } catch (error) {
-      console.error("Error fetching images:", error);
-    }
-  };
 
   const toggleExpanded = () => {
     setExpanded((prevExpanded) => !prevExpanded);
@@ -43,9 +26,7 @@ const VerticalCarousel = () => {
   useLayoutEffect(() => {
     updateMaxHeight();
   }, [images, expanded]);
-  return loading ? (
-    <div>Loading ...</div>
-  ) : (
+  return (
     <>
       <div className="vertical-carousel">
         <div
@@ -64,6 +45,7 @@ const VerticalCarousel = () => {
             <DownOutlined style={{ fontSize: "30px" }} />
           )}
         </button>
+      
       </div>
     </>
   );
