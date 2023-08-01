@@ -13,16 +13,14 @@ const VerticalCarousel = () => {
     getImages();
   }, []);
 
-  useLayoutEffect(() => {
-    updateMaxHeight();
-  }, [images, expanded]);
+ 
   const getImages = async () => {
     setLoading(true);
     try {
       const response = await axios.get("https://fakestoreapi.com/products");
       const imageUrls = response.data.map((product) => product.image);
       let newdata = imageUrls.slice(0, 12);
-      console.log(imageUrls);
+    
       setImages(newdata);
       setLoading(false);
     } catch (error) {
@@ -42,9 +40,11 @@ const VerticalCarousel = () => {
         : "480px";
     }
   };
-
+  useLayoutEffect(() => {
+    updateMaxHeight();
+  }, [images, expanded]);
   return loading ? (
-    <div></div>
+    <div>Loading ...</div>
   ) : (
     <>
       <div className="vertical-carousel">
