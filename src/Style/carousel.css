@@ -1,0 +1,57 @@
+.vertical-carousel {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: 20px;
+  position: relative;
+}
+
+.carousel {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  overflow: hidden;
+  gap: 10px;
+  padding: 10px;
+  max-height: 480px;
+  transition: max-height 1.5s ease;
+}
+
+.carousel-item {
+  border-radius: 8px;
+}
+.carousel-item:hover {
+  box-shadow: 0 0 3px 3px rgba(255, 0, 0, 0.5),
+    0 0 3px 3px rgba(255, 153, 0, 0.5);
+
+  border-radius: 8px;
+}
+.carousel-item img {
+  width: 100%;
+  border-radius: 8px;
+  max-height: 150px;
+  object-fit: contain;
+}
+
+.carousel.expanded {
+  max-height: 100%;
+}
+
+.dropdown-btn {
+  padding: 12px;
+  border-radius: 50px;
+  position: absolute;
+  bottom: 10px;
+  background: linear-gradient(to right, rgb(239, 165, 28), rgb(210, 34, 34));
+  color: white;
+  border: 1px solid white;
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+  transition: background-color 0.3s ease;
+}
+
+.dropdown-btn:hover {
+  background: linear-gradient(to right, orange, red);
+}
+
+
+
